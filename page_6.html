@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Lancement et test</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>6. 🚀 Lancement et test</h1>
+        <p>
+          Pour visualiser le résultat, il ne suffit pas d'ouvrir le fichier
+          <i>'index.html'</i> directement dans un navigateur.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="cors-issue">
+        <h2>Problème de sécurité (CORS)</h2>
+        <p>
+          Les navigateurs modernes bloquent le chargement d'images locales
+          complexes pour des raisons de sécurité (politique <b>CORS</b> —
+          Cross-Origin Resource Sharing).
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="solution">
+        <h2>Solution : Utilisation d'un serveur Web local</h2>
+        <p>
+          Il est nécessaire d'utiliser un serveur web local pour que le
+          navigateur traite le fichier comme s'il était servi via un protocole
+          <i>'http://'</i>.
+        </p>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Solution avec Visual Studio Code
+          </button>
+          <div class="code-content">
+            <p>
+              <b>Recommandation :</b> Avec l'éditeur VS Code, installez
+              l'extension l'extension "Live Server", faites un clic droit sur le
+              fichier HTML et sélectionnez "Open with Live Server".
+            </p>
+            <p>
+              Ceci démarrera un serveur web local (souvent sur
+              `http://127.0.0.1:5500`) et contournera le blocage CORS.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_5.html">← Partie précédente (Dynamisation)</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="index.html">↑ Retour au Menu du tuto</a>
+        </div>
+      </div>
+
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - Guide d'intégration Pannellum<br />
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

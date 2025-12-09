@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. Dynamisation de l'interface</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>5. ✨ Dynamisation de l'interface</h1>
+        <p>
+          Pour que le titre en haut à gauche change automatiquement lorsque
+          l'utilisateur se déplace, nous utilisons un
+          <b>"écouteur d'événement"</b> JavaScript qui surveille l'événement
+          <i>'scenechange'</i>.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="listener">
+        <h2>Fonctionnement de l'écouteur `scenechange`</h2>
+        <p>
+          À chaque changement de scène, l'écouteur exécute une fonction qui a
+          pour tâche de:
+        </p>
+        <ul>
+          <li>Récupérer l'ID de la nouvelle scène.</li>
+          <li>Chercher le titre et la description correspondants.</li>
+          <li>Mettre à jour le contenu HTML de la boîte d'information.</li>
+        </ul>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Syntaxe de l'écouteur d'événement `scenechange`
+          </button>
+          <div class="code-content">
+            <p>
+              <b>Objectif :</b> Attacher une fonction au changement de scène
+              pour mettre à jour le titre de la boîte d'information.
+            </p>
+            <pre>
+<code>// Le <i>'viewer'</i> est la constante définie à l'étape 3
+viewer.on("scenechange", function(sceneId) {
+    // 1. Récupérer l'ID et l'élément de la boîte d'information
+    const infoBox = document.querySelector('.info-box');
+    
+    // 2. Mettre à jour le titre basé sur sceneId
+    infoBox.innerHTML = `&lt;h1&gt;Vous êtes dans : ${sceneId}&lt;/h1&gt;`;
+});</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_4.html">← Partie précédente (HotSpots)</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page_6.html">→ Partie suivante (Lancement et test)</a>
+        </div>
+      </div>
+
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - Guide d'intégration Pannellum<br />
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

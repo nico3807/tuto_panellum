@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Mise en place de l'interface (HTML & CSS)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>2. 💻 Mise en place de l'interface (HTML & CSS)</h1>
+        <p>
+          Le fichier `index.html` doit charger les librairies nécessaires et
+          définir les conteneurs pour la visionneuse et les informations
+          superposées.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="principles">
+        <h2>Principes de superposition et d'intégration</h2>
+        <p>
+          Le principe clé est que la visionneuse Pannellum occupe tout l'écran
+          (100vh et 100vw). Les "blocs" HTML (div) sont placés par-dessus grâce
+          au positionnement CSS `absolute`.
+        </p>
+        <ul>
+          <li>
+            Le conteneur <b>`id="panorama"`</b> : C'est ici que la librairie
+            Pannellum va générer la visite.
+          </li>
+          <li>
+            La classe <b>`.info-box`</b> : Affiche le titre de la pièce actuelle
+            (en haut à gauche).
+          </li>
+          <li>
+            La classe <b>`.controls`</b> : Affiche les instructions de
+            navigation (en bas à droite).
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section id="libraries">
+        <h2>Intégration des librairies (CDN)</h2>
+        <p>
+          Les librairies CSS et JS de Pannellum sont importées directement
+          depuis un CDN (serveur distant) via les balises
+          <code>&lt;link&gt;</code> et <code>&lt;script&gt;</code> dans
+          l'en-tête du fichier. Aucune installation locale n'est nécessaire.
+        </p>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Structure HTML minimale et CDN
+          </button>
+          <div class="code-content">
+            <p>
+              <b>Objectif :</b> Intégrer les liens CDN et les conteneurs de la
+              visionneuse et des informations.
+            </p>
+            <pre>
+<code>&lt;head&gt;
+  &lt;!-- Librairie CSS --&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- 1. Conteneur principal de la visionneuse --&gt;
+  &lt;div id="panorama"&gt;&lt;/div&gt;
+
+  &lt;!-- 2. Blocs d'information superposés --&gt;
+  &lt;div class="info-box"&gt;...&lt;/div&gt;
+  &lt;div class="controls"&gt;...&lt;/div&gt;
+
+  &lt;!-- Librairie JS --&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_1.html">← Partie précédente (Prérequis)</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page_3.html">→ Partie suivante (Configuration des scènes)</a>
+        </div>
+      </div>
+
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - Guide d'intégration Pannellum<br />
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

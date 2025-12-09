@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. La navigation entre les pièces (HotSpots)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>4. 🖱️ La navigation entre les pièces (HotSpots)</h1>
+        <p>
+          Les "points chauds" (`hotSpots`) sont des zones cliquables
+          positionnées dans l'espace 3D qui permettent à l'utilisateur de se
+          déplacer.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="parameters">
+        <h2>Paramètres clés d'un HotSpot</h2>
+        <p>Chaque point est défini par quatre paramètres essentiels :</p>
+        <ul>
+          <li>
+            <b>`pitch`</b> (Axe vertical) : Place le point vers le haut ou le
+            bas.
+          </li>
+          <li>
+            <b>`yaw`</b> (Axe horizontal) : Place le point à gauche, à droite ou
+            derrière (en degrés).
+          </li>
+          <li>
+            <b>`type`</b> : Indique l'action (`"scene"` pour changer de pièce ou
+            `"info"` pour afficher du texte).
+          </li>
+          <li>
+            <b>`sceneId`</b> : L'identifiant exact de la scène de destination
+            (si le type est `"scene"`).
+          </li>
+        </ul>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Exemple de HotSpot pour un déplacement
+          </button>
+          <div class="code-content">
+            <p>
+              <b>Objectif :</b> Ajouter un point chaud dans la scène `hall` qui
+              permet d'aller à la scène `cafe`.
+            </p>
+            <pre>
+<code>hotSpots: [
+  {
+    pitch: 0,           // À niveau verticalement
+    yaw: 100,           // 100 degrés horizontalement
+    type: "scene",      // Type déplacement
+    text: "Aller au café",
+    sceneId: "cafe"     // Destination
+  }
+]</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <section id="observation">
+        <h2>Observation importante</h2>
+        <p>
+          Dans la scène `hall_baby` du fichier fourni, un hotspot vers le "hall"
+          était configuré avec le type <b>"info"</b>. Pour rendre le retour
+          possible, il faudra remplacer `"info"` par `"scene"`.
+        </p>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_3.html"
+            >← Partie précédente (Configuration des scènes)</a
+          >
+        </div>
+        <div class="back-to-menu">
+          <a href="page_5.html"
+            >→ Partie suivante (Dynamisation de l'interface)</a
+          >
+        </div>
+      </div>
+
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - Guide d'intégration Pannellum<br />
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

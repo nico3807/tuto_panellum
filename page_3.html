@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Configuration des scènes (Javascript)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>3. ⚙️ Configuration des scènes (Javascript)</h1>
+        <p>
+          C'est la partie logique du code. Le script définit un dictionnaire de
+          <b>scènes</b>, où chaque scène correspond à une pièce de la visite.
+        </p>
+      </header>
+
+      <hr />
+
+      <section id="structure">
+        <h2>Structure logique du script de configuration</h2>
+        <p>
+          L'objet principal `pannellum.viewer()` initialise la visionneuse. Il
+          prend deux arguments : l'ID du conteneur HTML ("panorama") et un objet
+          de configuration.
+        </p>
+        <ul>
+          <li>
+            <b>`default`</b> : Contient les paramètres globaux (scène de départ,
+            chargement automatique).
+          </li>
+          <li>
+            <b>`scenes`</b> : Contient la définition de chaque pièce (`hall`,
+            `cafe`, etc.).
+          </li>
+        </ul>
+
+        <div class="code-step">
+          <button class="toggle-button-code" onclick="toggleCode(this)">
+            [ + ] Indice : Structure de base du script Pannellum
+          </button>
+          <div class="code-content">
+            <p>
+              <b>Objectif :</b> Définir la scène par défaut (`hall`) et la
+              structure de la scène.
+            </p>
+            <pre>
+<code>const viewer = pannellum.viewer("panorama", {
+  default: {
+    firstScene: "hall", 
+    autoLoad: true,     
+  },
+  scenes: {
+    hall: {
+      title: "hall",
+      type: "equirectangular",    // Format standard 360
+      panorama: "./img/hall.png", // Chemin vers l'image
+      autoRotate: -2,             // Rotation automatique lente
+      hotSpots: [ /* ... points de navigation ... */ ]
+    },
+    // ... autres scènes ...
+  }
+});</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <hr />
+
+      <div class="menu-buttons">
+        <div class="back-to-menu">
+          <a href="page_2.html">← Partie précédente (Interface)</a>
+        </div>
+        <div class="back-to-menu">
+          <a href="page_4.html">→ Partie suivante (Navigation HotSpots)</a>
+        </div>
+      </div>
+
+      <footer>
+        <p style="text-align: center; font-size: 0.9em; color: #666">
+          © 2025 — BUT MMI Béziers - Guide d'intégration Pannellum<br />
+        </p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
