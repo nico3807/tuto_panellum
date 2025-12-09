@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visite Virtuelle</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pannellum/2.5.6/pannellum.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+      }
+      #panorama {
+        width: 100vw;
+        height: 100vh;
+      }
+      .info-box {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        z-index: 1000;
+        max-width: 300px;
+      }
+      .info-box h2 {
+        margin: 0 0 10px 0;
+        font-size: 20px;
+      }
+      .info-box p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .controls {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 1000;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="info-box" id="infoBox">
+      <h2>hall_accueil</h2>
+      <p>
+        Cliquez sur les points fléchés pour naviguer dans la visite virtuelle.
+      </p>
+    </div>
+
+    <div class="controls">
+      🖱️ Clic gauche + glisser pour regarder autour<br />
+      🔍 Molette pour zoomer
+    </div>
+
+    <div id="panorama"></div>
+
+    <script>
+      // Configuration de la visite virtuelle
+      const viewer = pannellum.viewer("panorama", {
+        default: {
+          firstScene: "hall",
+          autoLoad: true,
+        },
+        scenes: {
+          hall: {
+            title: "hall",
+            type: "equirectangular",
+            panorama: "./img/hall.png",
+            autoRotate: -2,
+            autoRotateInactivityDelay: 3000,
+            hotSpots: [
+              {
+                pitch: 0,
+                yaw: 65,
+                type: "scene",
+                text: "Aller au baby foot",
+                sceneId: "hall_baby",
+                targetYaw: 0,
+                targetPitch: 0,
+              },
+              {
+                pitch: 0,
+                yaw: 100,
+                type: "scene",
+                text: "Aller au café",
+                sceneId: "cafe",
+                targetYaw: 0,
+                targetPitch: 0,
+              },
+            ],
+          },
+          cafe: {
+            title: "cafe",
+            type: "equirectangular",
+            panorama: "./img/cafe.png",
+            autoRotate: -2,
+            autoRotateInactivityDelay: 3000,
+            hotSpots: [
+              {
+                pitch: -5,
+                yaw: 0,
+                type: "scene",
+                text: "Retour au hall d'accueil",
+                sceneId: "hall",
+                targetYaw: 0,
+                targetPitch: 0,
+              },
+              {
+                pitch: 0,
+                yaw: 100,
+                type: "scene",
+                text: "Aller au hall_baby",
+                sceneId: "hall_baby",
+              },
+            ],
+          },
+          hall_baby: {
+            title: "hall_baby",
+            type: "equirectangular",
+            panorama: "./img/baby.png",
+            hotSpots: [
+              {
+                pitch: -5,
+                yaw: 90,
+                type: "scene",
+                text: "Retour au cafe",
+                sceneId: "cafe",
+              },
+              {
+                pitch: 5,
+                yaw: -45,
+                type: "info",
+                text: "Retour au hall d'accueil",
+                sceneId: "hall",
+              },
+            ],
+          },
+        },
+      });
+
+      // Mettre à jour la boîte d'info quand on change de scène
+      viewer.on("scenechange", function (sceneId) {
+        const infoBox = document.getElementById("infoBox");
+        const titles = {
+          hall_accueil: "hall_accueil",
+          hall_baby: "hall_baby",
+          hall_cafe: "hall_cafe",
+        };
+        const descriptions = {
+          hall_accueil: "Espace d'entrée principal avec vue panoramique.",
+          hall_baby: "hall des babys.",
+          hall_cafe: "Espace cafe.",
+        };
+
+        infoBox.querySelector("h2").textContent = titles[sceneId] || sceneId;
+        infoBox.querySelector("p").textContent =
+          descriptions[sceneId] || "Vue de l'espace café détente.";
+      });
+    </script>
+  </body>
+</html>
